@@ -1,0 +1,22 @@
+{
+  "name": "railway-reservation-backend",
+  "version": "1.0.0",
+  "description": "railway-reservation-backend system",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hariomgola/Railway-Reservation.git"
+  },
+  "author": "hariom gola",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2"
+  }
+}

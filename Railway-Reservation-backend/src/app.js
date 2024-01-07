@@ -16,6 +16,7 @@ app.use(expressRouter);
 
 // starting the server
 const startServer = () => {
+  console.clear();
   app.listen(PORT, () => {
     console.log(`|> Server is up and running at ${PORT}`);
   });

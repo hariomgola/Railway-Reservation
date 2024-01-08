@@ -41,7 +41,7 @@ import { Component } from '@angular/core';
 
       .toy-train {
         position: relative;
-        width: 11vw;
+        width: 160px;
       }
 
       .engine {
@@ -50,11 +50,11 @@ import { Component } from '@angular/core';
       }
 
       .window {
-        height: 2.8vw;
-        width: 3vw;
+        height: 38px;
+        width: 40px;
         background-color: #194488;
         position: relative;
-        border: 0.3vw solid #000;
+        border: 4px solid #000;
       }
 
       .window:before,
@@ -62,104 +62,104 @@ import { Component } from '@angular/core';
         content: '';
         position: absolute;
         left: 50%;
-        border: 0.3vw solid #000;
+        border: 4px solid #000;
       }
 
       .window:before {
-        height: 0.7vw;
+        height: 10px;
         background-color: #f82510;
-        width: 4.5vw;
-        margin-top: -1.3vw;
-        margin-left: -2.6vw;
-        border-radius: 0.8vw;
+        width: 60px;
+        margin-top: -18px;
+        margin-left: -33px;
+        border-radius: 10px;
       }
 
       .window:after {
-        margin-left: -0.8vw;
-        margin-top: 0.3vw;
+        margin-left: -10px;
+        margin-top: 4px;
         border-radius: 50%;
-        height: 1.1vw;
-        width: 1.1vw;
+        height: 15px;
+        width: 15px;
         background-color: #fff;
       }
 
       .engine-main {
-        height: 1vw;
-        width: 3.5vw;
-        border: 0.3vw solid #000;
+        height: 13px;
+        width: 50px;
+        border: 4px solid #000;
         background-color: #3d9a01;
         position: absolute;
-        border-radius: 0 0.8vw 0.8vw 0;
-        right: -4.1vw;
-        bottom: -0.3vw;
+        border-radius: 0 10px 10px 0;
+        right: -60px;
+        bottom: -4px;
       }
 
       .engine-main:before {
         content: '';
-        height: 1vw;
-        width: 0.8vw;
+        height: 13px;
+        width: 10px;
         background-color: #000;
         position: absolute;
-        top: -1.1vw;
-        left: 0.4vw;
+        top: -15px;
+        left: 5px;
         transform: rotate(180deg);
         border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
       }
 
       .engine-main:after {
         content: '';
-        height: 1.2vw;
-        width: 0.8vw;
+        height: 2.5pxw;
+        width: 10px;
         position: absolute;
         display: block;
-        right: 0.5vw;
-        top: -1.8vw;
+        right: 7px;
+        top: -2.2px;
         border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
         transform: rotate(180deg);
         z-index: -1;
         background-color: #194488;
-        border: 0.3vw solid #000;
+        border: 4px solid #000;
       }
 
       .engine-body {
-        height: 1.7vw;
-        width: 7.5vw;
+        height: 25px;
+        width: 110px;
         position: absolute;
-        left: -0.2vw;
-        top: 3vw;
+        left: -2px;
+        top: 45px;
         background-color: #f69f00;
-        border: 0.3vw solid #000;
-        border-radius: 0.5vw;
+        border: 4px solid #000;
+        border-radius: 7px;
       }
 
       .engine-body .big-wheel {
-        top: 0.3vw;
-        left: 0.2vw;
+        top: 4px;
+        left: 2px;
       }
 
       .engine-body .normal-wheel {
-        left: 4.5vw;
-        top: 0.5vw;
+        left: 60px;
+        top: 7px;
       }
 
       .engine-body:before {
         content: '';
         position: absolute;
-        height: 0.5vw;
-        width: 0.5vw;
-        left: -1.1vw;
-        bottom: 0.2vw;
+        height: 7px;
+        width: 7px;
+        left: -2px;
+        bottom: 2px;
         z-index: -1;
         background-color: #fff;
         border-radius: 50%;
-        border: 0.3vw solid #000;
+        border: 4px solid #000;
       }
 
       .wheels > div {
         position: absolute;
         background-color: #f82510;
         border-radius: 50%;
-        border: 0.3vw solid #000;
+        border: 4px solid #000;
         animation: wheel-rotate 1s linear infinite;
       }
 
@@ -167,45 +167,45 @@ import { Component } from '@angular/core';
         content: '';
         position: absolute;
         width: 100%;
-        border-bottom: 0.1vw solid #000;
+        border-bottom: 1.2px solid #000;
         top: 50%;
-        margin-top: -0.1vw;
+        margin-top: -1.2px;
       }
 
       .wheels > div:after {
         content: '';
-        height: 0.8vw;
-        width: 0.8vw;
+        height: 10px;
+        width: 10px;
         position: absolute;
         background-color: #000;
         border-radius: 50%;
         left: 50%;
         top: 50%;
-        margin-left: -0.4vw;
-        margin-top: -0.4vw;
+        margin-left: -5.9px;
+        margin-top: -5.9px;
       }
 
       .wheels .big-wheel {
-        width: 2.2vw;
-        height: 2.2vw;
+        width: 35px;
+        height: 35px;
         animation-delay: -0.3s;
       }
 
       .wheels .normal-wheel {
-        height: 2vw;
-        width: 2vw;
+        height: 30px;
+        width: 30px;
         animation-delay: -0.6s;
       }
 
       .locomotive {
-        height: 3.5vw;
-        width: 6vw;
-        border: 0.3vw solid #000;
+        height: 50px;
+        width: 90px;
+        border: 4px solid #000;
         background-color: #f69f00;
-        border-radius: 0.5vw;
+        border-radius: 7px;
         position: relative;
         float: left;
-        margin-top: 1.3vw;
+        margin-top: 19px;
       }
 
       .locomotive:before {
@@ -226,9 +226,9 @@ import { Component } from '@angular/core';
           #000000 65%,
           #000000 100%
         );
-        height: 0.3vw;
+        height: 4px;
         position: absolute;
-        top: 0.6vw;
+        top: 10px;
         left: 0;
       }
 
@@ -249,14 +249,14 @@ import { Component } from '@angular/core';
           #000000 90%,
           #000000 100%
         );
-        height: 0.3vw;
+        height: 4px;
         position: absolute;
-        top: 1.4vw;
+        top: 20px;
         left: 0;
       }
 
       .locomotive .wheels > div {
-        top: 2.2vw;
+        top: 35px;
         animation-delay: -0.6s;
       }
 
@@ -265,39 +265,39 @@ import { Component } from '@angular/core';
       }
 
       .locomotive .normal-wheel:first-of-type {
-        left: 0.2vw;
+        left: 2px;
       }
 
       .locomotive .normal-wheel:last-of-type {
-        right: 0.2vw;
+        right: 2px;
       }
 
       .locomotive .trash {
-        height: 3.5vw;
-        width: 5vw;
+        height: 50px;
+        width: 9px;
         position: absolute;
-        top: -1.8vw;
-        border: 0.3vw solid #000;
+        top: -20px;
+        border: 4px solid #000;
         background-color: #3d9a01;
         border-radius: 50%;
-        left: 0.2vw;
+        left: 2px;
         z-index: -1;
       }
 
       .tracks {
         position: relative;
-        width: 20vw;
-        bottom: -1vw;
+        width: 300px;
+        bottom: -15px;
         overflow: hidden;
-        height: 0.3vw;
+        height: 4px;
       }
 
       .tracks span {
         display: inline;
-        height: 0.3vw;
-        width: 20vw;
+        height: 4px;
+        width: 300px;
         position: absolute;
-        left: 20vw;
+        left: 300px;
         background: linear-gradient(
           to right,
           black 0%,
@@ -325,12 +325,12 @@ import { Component } from '@angular/core';
       .smokes span:before {
         display: block;
         content: '';
-        height: 0.8vw;
-        width: 0.8vw;
+        height: 10px;
+        width: 10px;
         background-color: #fff;
         border-radius: 50%;
         position: absolute;
-        right: 0.8vw;
+        right: 10px;
         top: 1.5vw;
         z-index: -1;
       }
@@ -364,7 +364,7 @@ import { Component } from '@angular/core';
 
       @keyframes track {
         100% {
-          left: -20vw;
+          left: -300px;
         }
       }
     `,

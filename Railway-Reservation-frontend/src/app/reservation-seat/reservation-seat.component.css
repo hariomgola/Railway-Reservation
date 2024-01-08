@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+.main-ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.seat+.seat-label {
+    background-color: #ccc;
+    color: #fff;
+    padding: 5px 10px;
+    font-family: sans-serif;
+    cursor: pointer;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 5px 10px 5px 10px;
+    transition: all 0.6s ease;
+}
+
+.seat:checked+.seat-label {
+    background-color: #0a0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: rotateY(360deg);
+}

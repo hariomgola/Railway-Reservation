@@ -125,7 +125,7 @@ import { TicketDetails } from './reservation-ticket.component.model';
           <p>{{ startTime }} <span [innerText]="'TO'"></span> {{ endTime }}</p>
         </div>
         <div class="barcode">
-          <img src="" />
+          <reservation-barcode></reservation-barcode>
         </div>
         <p class="ticket-pnr" [innerText]="pnr"></p>
       </div>

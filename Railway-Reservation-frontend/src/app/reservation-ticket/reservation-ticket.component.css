@@ -29,7 +29,8 @@
 }
 
 .railwayImage {
-    height: 250px;
+    /* height: 250px; */
+    height: inherit;
     width: 250px;
     background-image: url("../../assets/indian-travel.png");
     background-size: contain;

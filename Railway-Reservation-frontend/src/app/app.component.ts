@@ -11,6 +11,6 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
   ngOnInit(): void {
     // On Refresh Scenerio
-    this.router.navigate(['']);
+    // this.router.navigate(['']);
   }
 }

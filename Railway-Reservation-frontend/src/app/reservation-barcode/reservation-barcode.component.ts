@@ -1,3 +1,4 @@
+// Component completed
 import { Component } from '@angular/core';
 
 @Component({

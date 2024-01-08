@@ -1,1 +1,104 @@
-<p>reservation-search works!</p>
+<div class="creator-Hari">
+  <div class="card">
+    <ng-conatiner
+      [ngTemplateOutlet]="ticketStatus"
+      [ngTemplateOutletContext]="{ _available: 80 }"
+    ></ng-conatiner>
+    <reservation-animation></reservation-animation>
+    <ng-container
+      [ngTemplateOutlet]="mainForm"
+      [ngTemplateOutletContext]="{}"
+    ></ng-container>
+  </div>
+</div>
+
+<ng-template #ticketStatus let-available="_available">
+  <div class="title">
+    <h1>Railway Reservation</h1>
+    <span>
+      Available Tickets: <span>{{ available }}</span></span
+    >
+  </div>
+</ng-template>
+<ng-template #mainForm>
+  <div>
+    <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+      <div class="content-div">
+        <label for="name" class="form-label" [innerText]="'Name:'"></label>
+        <input
+          id="name"
+          formControlName="name"
+          class="form-input"
+          type="text"
+          placeholder="First and Last name"
+          required
+          autofocus
+        />
+      </div>
+      <div class="content-div">
+        <label for="age" class="form-label" [innerText]="'Age:'"></label>
+        <input
+          id="age"
+          formControlName="age"
+          class="form-input"
+          type="number"
+          placeholder="Age"
+          min="1"
+          max="100"
+          required
+        />
+      </div>
+      <div class="content-div">
+        <label for="_from" class="form-label" [innerText]="'From:'"></label>
+        <input
+          id="_from"
+          formControlName="_from"
+          class="form-input"
+          type="text"
+          placeholder="Departure Station"
+          required
+        />
+      </div>
+      <div class="content-div">
+        <label for="_to" class="form-label" [innerText]="'To:'"></label>
+        <input
+          id="_to"
+          formControlName="_to"
+          class="form-input"
+          type="text"
+          placeholder="Arrival Station"
+          required
+        />
+      </div>
+      <div class="content-div">
+        <label
+          for="_ticket"
+          class="form-label"
+          [innerText]="'Tickets:'"
+        ></label>
+        <input
+          id="_ticket"
+          formControlName="_ticket"
+          class="form-input"
+          type="number"
+          placeholder="Total Ticket"
+          min="0"
+          max="70"
+          required
+        />
+      </div>
+      <div class="content-div">
+        <label for="_date" class="form-label" [innerText]="'Date:'"></label>
+        <input
+          id="_date"
+          formControlName="_date"
+          class="form-input"
+          type="date"
+          placeholder="Travelling Date"
+          id="date"
+          required
+        />
+      </div>
+      <input class="form-button" type="submit" value="Search Ticket" />
+    </form></div
+></ng-template>

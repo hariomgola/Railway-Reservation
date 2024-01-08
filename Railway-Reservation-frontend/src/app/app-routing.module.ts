@@ -5,9 +5,14 @@ import { ReservationTicketComponent } from './reservation-ticket/reservation-tic
 import { ReservationBarcodeComponent } from './reservation-barcode/reservation-barcode.component';
 import { ReservationSeatComponent } from './reservation-seat/reservation-seat.component';
 import { ReservationSearchComponent } from './reservation-search/reservation-search.component';
+import { ReservationErrorComponent } from './reservation-error/reservation-error.component';
+import { ReservationAnimationComponent } from './reservation-animation/reservation-animation.component';
 
 const routes: Routes = [
+  { path: '', component: ReservationSearchComponent },
+  { path: 'ticket-map', component: ReservationSeatComponent },
   { path: 'ticket-check', component: ReservationTicketComponent },
+  { path: '**', component: ReservationErrorComponent },
 ];
 
 @NgModule({
@@ -20,4 +25,6 @@ export const ApplicationRoutingModule = [
   ReservationSearchComponent,
   ReservationTicketComponent,
   ReservationBarcodeComponent,
+  ReservationErrorComponent,
+  ReservationAnimationComponent,
 ];

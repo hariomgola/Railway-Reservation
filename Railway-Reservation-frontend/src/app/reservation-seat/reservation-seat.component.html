@@ -1,73 +1,86 @@
-<div class="train">
-  <ol class="main-ol">
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '01'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '02'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '03'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '04'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '05'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '06'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '07'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '08'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '09'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '10'
-      }"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="trainseat"
-      [ngTemplateOutletContext]="{
-        _seatRowNumber: '11'
-      }"
-    ></ng-container>
-  </ol>
+<div class="component-body">
+  <div class="train">
+    <ng-container [ngTemplateOutlet]="title"></ng-container>
+    <ng-container>
+      <ol class="main-ol">
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '01'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '02'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '03'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '04'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '05'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '06'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '07'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '08'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '09'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '10'
+          }"
+        ></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="trainseat"
+          [ngTemplateOutletContext]="{
+            _seatRowNumber: '11'
+          }"
+        ></ng-container>
+      </ol>
+    </ng-container>
+    <ng-container [ngTemplateOutlet]="inputButtons"></ng-container>
+  </div>
 </div>
+
+<!-- Template for header -->
+<ng-template #title>
+  <div class="title">
+    <h1>Please select ticket</h1>
+  </div>
+</ng-template>
 
 <!-- Template for train row -->
 <ng-template #trainseat let-seatRowNumber="_seatRowNumber">
@@ -119,10 +132,23 @@
   </li>
 </ng-template>
 
-<!-- Teamplate for single seat -->
+<!-- Template for single seat -->
 <ng-template #trainsingleseat let-seatData="_seatData">
   <li class="main-ol">
     <input style="display: none" class="seat" type="checkbox" [id]="seatData" />
     <label class="seat-label" [for]="seatData" [innerHtml]="seatData"></label>
   </li>
+</ng-template>
+
+<!-- Template for input buttons -->
+<ng-template #inputButtons>
+  <div class="inputConatiner">
+    <input
+      class="goback"
+      type="submit"
+      value="Go Back"
+      (click)="onBackButton()"
+    />
+    <input class="submit" type="submit" value="Submit" (click)="onSubmit()" />
+  </div>
 </ng-template>

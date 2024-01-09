@@ -1,3 +1,8 @@
+<reservation-popup
+  [isModelOpen]="isError"
+  [textMsg]="errorMessage"
+  (modelController)="onClosingModelPopup($event)"
+></reservation-popup>
 <div class="creator-Hari">
   <div class="card">
     <ng-conatiner

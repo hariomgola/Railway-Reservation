@@ -14,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ReservationSearchComponent implements OnInit, OnDestroy {
   ticketForm!: FormGroup;
+  isError = false;
+  errorMessage = 'Please provide the correct input !';
   constructor(
     private fromBuilder: FormBuilder,
     private router: Router,
@@ -32,7 +34,7 @@ export class ReservationSearchComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.pattern('[0-9-]*'),
         Validators.min(1),
-        Validators.max(80),
+        Validators.max(100),
       ]),
       _from: new FormControl('', [
         Validators.required,
@@ -52,11 +54,14 @@ export class ReservationSearchComponent implements OnInit, OnDestroy {
     });
   }
   onSubmit() {
-    // if (this.ticketForm.invalid) {
-    //   return this.ticketForm.markAllAsTouched();
-    // }
+    if (this.ticketForm.invalid) {
+      this.isError = true;
+      return this.ticketForm.markAllAsTouched();
+    }
     this.router.navigate(['ticket-map'], { relativeTo: this.route });
-    console.log('------>', this.ticketForm.value);
+  }
+  onClosingModelPopup(flagValue: boolean) {
+    this.isError = flagValue;
   }
   ngOnDestroy() {
     this.ticketForm.reset({

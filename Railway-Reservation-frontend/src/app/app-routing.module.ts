@@ -7,6 +7,7 @@ import { ReservationSeatComponent } from './reservation-seat/reservation-seat.co
 import { ReservationSearchComponent } from './reservation-search/reservation-search.component';
 import { ReservationErrorComponent } from './reservation-error/reservation-error.component';
 import { ReservationAnimationComponent } from './reservation-animation/reservation-animation.component';
+import { ReservationPopupComponent } from './reservation-popup/reservation-popup.component';
 
 const routes: Routes = [
   { path: '', component: ReservationSearchComponent },
@@ -27,4 +28,5 @@ export const ApplicationRoutingModule = [
   ReservationBarcodeComponent,
   ReservationErrorComponent,
   ReservationAnimationComponent,
+  ReservationPopupComponent,
 ];

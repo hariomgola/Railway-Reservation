@@ -17,3 +17,23 @@ export interface TicketDetails {
     station: string;
   };
 }
+
+export interface SeatingMap {
+  [key: string]: {
+    label: string;
+    isAlreadyBooked: boolean;
+    isChecked: boolean;
+  };
+}
+
+export interface TicketMapping {
+  [key: string]: {
+    A: string;
+    B: string;
+    C: string;
+    D: string;
+    E: string;
+    F: string;
+    G: string;
+  };
+}

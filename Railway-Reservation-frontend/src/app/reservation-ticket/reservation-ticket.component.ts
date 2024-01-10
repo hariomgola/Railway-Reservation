@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TicketDetails } from './reservation-ticket.component.model';
+import { TicketDetails } from '../models/reservation.model';
 
 @Component({
   selector: 'reservation-ticket',

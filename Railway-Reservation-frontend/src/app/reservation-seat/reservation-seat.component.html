@@ -4,69 +4,10 @@
     <ng-container>
       <ol class="main-ol">
         <ng-container
+          *ngFor="let _seatRow of seatMapArray"
           [ngTemplateOutlet]="trainseat"
           [ngTemplateOutletContext]="{
-            _seatRowNumber: '01'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '02'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '03'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '04'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '05'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '06'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '07'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '08'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '09'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '10'
-          }"
-        ></ng-container>
-        <ng-container
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: '11'
+            _seatRowNumber: _seatRow
           }"
         ></ng-container>
       </ol>
@@ -87,45 +28,10 @@
   <li class="seat-row">
     <ol style="display: flex" class="seats-row">
       <ng-container
+        *ngFor="let _seat of seatArray"
         [ngTemplateOutlet]="trainsingleseat"
         [ngTemplateOutletContext]="{
-          _seatData: seatRowNumber + 'A'
-        }"
-      ></ng-container>
-      <ng-container
-        [ngTemplateOutlet]="trainsingleseat"
-        [ngTemplateOutletContext]="{
-          _seatData: seatRowNumber + 'B'
-        }"
-      ></ng-container>
-      <ng-container
-        [ngTemplateOutlet]="trainsingleseat"
-        [ngTemplateOutletContext]="{
-          _seatData: seatRowNumber + 'C'
-        }"
-      ></ng-container>
-      <ng-container
-        [ngTemplateOutlet]="trainsingleseat"
-        [ngTemplateOutletContext]="{
-          _seatData: seatRowNumber + 'D'
-        }"
-      ></ng-container>
-      <ng-container
-        [ngTemplateOutlet]="trainsingleseat"
-        [ngTemplateOutletContext]="{
-          _seatData: seatRowNumber + 'E'
-        }"
-      ></ng-container>
-      <ng-container
-        [ngTemplateOutlet]="trainsingleseat"
-        [ngTemplateOutletContext]="{
-          _seatData: seatRowNumber + 'F'
-        }"
-      ></ng-container>
-      <ng-container
-        [ngTemplateOutlet]="trainsingleseat"
-        [ngTemplateOutletContext]="{
-          _seatData: seatRowNumber + 'G'
+          _seatData: seatRowNumber + _seat
         }"
       ></ng-container>
     </ol>

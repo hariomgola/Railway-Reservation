@@ -17,9 +17,9 @@ export class ReservationSearchComponent implements OnInit, OnDestroy {
   isError = false;
   errorMessage = 'Please provide the correct input !';
   constructor(
-    private fromBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute
+    readonly fromBuilder: FormBuilder,
+    readonly router: Router,
+    readonly route: ActivatedRoute
   ) {}
   ngOnInit() {
     this.buildTicketForm();

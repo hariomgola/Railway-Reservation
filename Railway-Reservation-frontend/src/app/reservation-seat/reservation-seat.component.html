@@ -1,20 +1,67 @@
+<reservation-popup
+  [isModelOpen]="isError"
+  [textMsg]="errorMessage"
+  (modelController)="onClosingModelPopup($event)"
+></reservation-popup>
+
 <div class="component-body">
   <div class="train">
     <ng-container [ngTemplateOutlet]="title"></ng-container>
     <ng-container>
-      <ol class="main-ol">
-        <ng-container
-          *ngFor="let _seatRow of seatMapArray"
-          [ngTemplateOutlet]="trainseat"
-          [ngTemplateOutletContext]="{
-            _seatRowNumber: _seatRow
-          }"
-        ></ng-container>
-      </ol>
+      <form [formGroup]="seatMapForm" (ngSubmit)="onSubmit()">
+        <ol class="main-ol">
+          <li class="seat-row" *ngFor="let _seatRow of seatMapArray">
+            <ol
+              style="display: flex"
+              class="seats-row"
+              [formGroupName]="_seatRow"
+            >
+              <li
+                class="main-ol"
+                *ngFor="let _seat of getSeatMapping(_seatRow)"
+              >
+                <input
+                  style="display: none"
+                  class="seat"
+                  type="checkbox"
+                  [id]="_seatRow + _seat"
+                  [formControlName]="_seat"
+                />
+                <label
+                  class="seat-label"
+                  [for]="_seatRow + _seat"
+                  [innerHtml]="_seatRow + _seat"
+                ></label>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </form>
     </ng-container>
     <ng-container [ngTemplateOutlet]="inputButtons"></ng-container>
   </div>
 </div>
+
+<!-- Using no form template -->
+<!-- <div class="component-body">
+  <div class="train">
+    <ng-container [ngTemplateOutlet]="title"></ng-container>
+    <ng-container>
+      <form [formGroup]="seatMapForm" (ngSubmit)="onSubmit()">
+        <ol class="main-ol">
+          <ng-container
+            *ngFor="let _seatRow of seatMapArray"
+            [ngTemplateOutlet]="trainseat"
+            [ngTemplateOutletContext]="{
+              _seatRowNumber: _seatRow
+            }"
+          ></ng-container>
+        </ol>
+      </form>
+    </ng-container>
+    <ng-container [ngTemplateOutlet]="inputButtons"></ng-container>
+  </div>
+</div> -->
 
 <!-- Template for header -->
 <ng-template #title>
@@ -28,7 +75,7 @@
   <li class="seat-row">
     <ol style="display: flex" class="seats-row">
       <ng-container
-        *ngFor="let _seat of seatArray"
+        *ngFor="let _seat of getSeatMapping(seatRowNumber)"
         [ngTemplateOutlet]="trainsingleseat"
         [ngTemplateOutletContext]="{
           _seatData: seatRowNumber + _seat

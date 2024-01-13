@@ -1,40 +1,42 @@
 const couchSittingMap = {
-  side_special: false,
-  right_lower: false,
-  right_middle: false,
-  right_upper: false,
-  left_lower: false,
-  left_middle: false,
-  left_upper: false,
+  'A': false,
+  'B': false,
+  'C': false,
+  'D': false,
+  'E': false,
+  'F': false,
+  'G': false,
 };
 const couchEndSittingMap = {
-  lower: false,
-  middle: false,
-  upper: true,
+  'A': false,
+  'B': false,
+  'C': true,
 };
-const couchMap = [];
+const couchMap = {};
 const seat = {
-  totalSeatVacant: 0,
-  totalSeatBooked: 0,
+  seat_total: 0,
+  seat_vacant: 0,
+  seat_booked: 0,
 };
 
 const pushDataForCouch = () => {
   // pushing regular couch map
   for (let i = 0; i < 11; i++) {
-    couchMap.push(couchSittingMap);
+    couchMap[i + 1] = couchSittingMap;
   }
   // pusshing end couch map
-  couchMap.push(couchEndSittingMap);
+  couchMap['12'] = couchEndSittingMap;
   seatCalculator();
 };
 
 const seatCalculator = () => {
-  couchMap.forEach((data) => {
-    for (const [key, value] of Object.entries(data)) {
-      if (value) seat.totalSeatBooked += 1;
-      if (!value) seat.totalSeatVacant += 1;
+  for (const data in couchMap) {
+    for (const [key, value] of Object.entries(couchMap[data])) {
+      seat.seat_total += 1
+      if (value) seat.seat_booked += 1;
+      if (!value) seat.seat_vacant += 1;
     }
-  });
+  };
 };
 
 module.exports = {

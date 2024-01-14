@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'reservation-popup',
+  selector: 'aboutme',
   template: `<div class="component-body">
     <div [ngClass]="{ 'model-main': true, 'model-open': isModelOpen }">
       <div class="model-inner">
@@ -161,16 +161,44 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     `,
   ],
 })
-export class ReservationPopupComponent implements OnInit {
-  @Input() isModelOpen = false;
-  @Input() textMsg = '';
-  @Output() modelController = new EventEmitter<boolean>();
+export class AboutmeComponent {
+  isModelOpen = false;
+  textMsg = '';
   constructor() {}
-  ngOnInit() {}
+  mainupulatingSessionValue() {
+    if (
+      !sessionStorage.getItem('aboutme') &&
+      sessionStorage.getItem('aboutme') !== 'executeDone' &&
+      sessionStorage.getItem('aboutme') !== 'execute'
+    ) {
+      sessionStorage.setItem('aboutme', 'execute');
+    }
+  }
+  ngOnInit() {
+    this.mainupulatingSessionValue();
+    this.textMsg = `
+    Made with ❤️ in Delhi,India<br><br>
+    Technology Used: <br>
+      - Frontend: Angular. <br>
+      - Backend:  Node.js and express. <br>
+      - DataBase: Sql and mongoDb. <br><br>
+
+    Do visit my profile:<br>
+    💻 https://github.com/hariomgola<br>
+    ⚡ Commitment to continuous learning.
+    `;
+    if (
+      sessionStorage.getItem('aboutme') &&
+      sessionStorage.getItem('aboutme') === 'execute'
+    ) {
+      this.onModelOpen();
+      sessionStorage.setItem('aboutme', 'executeDone');
+    }
+  }
   onModelOpen() {
-    this.modelController.emit(true);
+    this.isModelOpen = true;
   }
   onModelClose() {
-    this.modelController.emit(false);
+    this.isModelOpen = false;
   }
 }

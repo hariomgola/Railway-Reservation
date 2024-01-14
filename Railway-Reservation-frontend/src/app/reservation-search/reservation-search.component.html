@@ -1,13 +1,8 @@
-<reservation-popup
-  [isModelOpen]="isError"
-  [textMsg]="errorMessage"
-  (modelController)="onClosingModelPopup($event)"
-></reservation-popup>
 <div class="creator-Hari">
   <div class="card">
     <ng-conatiner
       [ngTemplateOutlet]="ticketStatus"
-      [ngTemplateOutletContext]="{ _available: 80 }"
+      [ngTemplateOutletContext]="{ _available: availableSeat }"
     ></ng-conatiner>
     <reservation-animation></reservation-animation>
     <ng-container
@@ -114,6 +109,7 @@
           class="form-input"
           type="date"
           placeholder="Travelling Date"
+          [min]="todaysDate"
           required
         />
       </div>
@@ -135,3 +131,13 @@
     <option [value]="'Manual'" [innerHtml]="'Manual'"></option>
   </datalist>
 </ng-container>
+
+<!-- Error Popup model -->
+<reservation-popup
+  [isModelOpen]="isError"
+  [textMsg]="errorMessage"
+  (modelController)="onClosingModelPopup($event)"
+></reservation-popup>
+
+<!-- About me Section -->
+<aboutme></aboutme>

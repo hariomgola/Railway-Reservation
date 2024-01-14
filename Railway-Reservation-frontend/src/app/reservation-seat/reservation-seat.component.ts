@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReservationService } from '../service/reservation-service.service';
 import { automaticSeatMapping } from '../logic/seat-selection.logic';
+import { TicketSearchData } from '../models/reservation.model';
 
 @Component({
   selector: 'reservation-seat',
@@ -11,24 +12,38 @@ import { automaticSeatMapping } from '../logic/seat-selection.logic';
 })
 export class ReservationSeatComponent implements OnInit, OnDestroy {
   isError = false;
-  errorMessage = 'Please provide the correct input !';
-  seatAllowed = 10;
+  errorMessage = '';
+  seatAllowed: number = 0;
   seatServiceData: any;
   seatMapForm!: FormGroup;
   seatMapArray: string[] = [];
   selectedSealtData: string[] = [];
+  seatRouterData!: TicketSearchData;
 
   constructor(
     readonly fromBuilder: FormBuilder,
     readonly router: Router,
     readonly route: ActivatedRoute,
     readonly reservationService: ReservationService
-  ) {}
+  ) {
+    this.routerFunctionality();
+  }
+
+  routerFunctionality() {
+    this.route.queryParams.subscribe((params: any) => {
+      if (params) {
+        this.seatRouterData = JSON.parse(params.data);
+        this.seatAllowed = this.seatRouterData._ticket;
+      }
+    });
+  }
 
   // oninit functionality
   ngOnInit() {
     this.buildSeatMapForm();
     this.getSeatMapData();
+    this.disablefilledValue();
+    this.mapSelectedSeatValue();
   }
 
   // function to get data
@@ -72,26 +87,51 @@ export class ReservationSeatComponent implements OnInit, OnDestroy {
       A: [false],
       B: [false],
       C: [false],
-      D: [{ value: true, disabled: true }],
-      E: [{ value: true, disabled: true }],
-      F: [{ value: true, disabled: true }],
-      G: [{ value: true, disabled: true }],
+      D: [{ value: '', disabled: true }],
+      E: [{ value: '', disabled: true }],
+      F: [{ value: '', disabled: true }],
+      G: [{ value: '', disabled: true }],
     });
+  }
+  disablefilledValue() {
+    this.seatMapArray.forEach((data) => {
+      for (const [key, value] of Object.entries(this.seatMapForm.value[data])) {
+        const control = <FormGroup>this.seatMapForm.get(data);
+        if (control.get(`${key}`)?.value) control.get(`${key}`)?.disable();
+      }
+    });
+  }
+
+  mapSelectedSeatValue() {
+    if (this.seatRouterData._couch === 'Automatic') {
+      const _data = automaticSeatMapping(
+        this.seatServiceData,
+        this.seatAllowed
+      );
+      _data.forEach((data) => {
+        const control = <FormGroup>(
+          this.seatMapForm.get(`${data.substring(0, 2)}`)
+        );
+        control.get(`${data.substring(2, 3)}`)?.setValue(true);
+      });
+    }
   }
 
   // execute the submit functionality
   onSubmit() {
     this.calculateSeat();
     if (this.seatAllowed !== this.selectedSealtData.length) {
+      this.errorMessage = `Please provide the correct input !<br> Seat Booked: ${this.seatAllowed} <br> Seat Selected: ${this.selectedSealtData.length}`;
       this.isError = true;
       return;
     }
+    this.reservationService.submitTicketData(this.selectedSealtData);
     this.router.navigate(['ticket-check']);
   }
 
   // execute the go back functionality
   onBackButton() {
-    this.router.navigate([''], { relativeTo: this.route });
+    this.router.navigate(['']);
   }
   onCheckBoxClick(event: any) {
     const data = {
@@ -104,7 +144,7 @@ export class ReservationSeatComponent implements OnInit, OnDestroy {
     };
   }
 
-  // retunr the seat mapping for ui ['A','B','C','D','E','F','G']
+  // return the seat mapping for ui ['A','B','C','D','E','F','G']
   getSeatMapping(data: string): string[] {
     return Object.keys(this.seatServiceData[data]);
   }

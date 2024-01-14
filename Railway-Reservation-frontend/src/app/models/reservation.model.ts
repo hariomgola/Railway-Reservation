@@ -5,6 +5,7 @@ export interface TicketDetails {
     passengerName: string;
     trainName: string;
     bookingDate: string;
+    seatNumber: string[];
   };
   journey_start: {
     date: string;
@@ -36,4 +37,14 @@ export interface TicketMapping {
     F: string;
     G: string;
   };
+}
+
+export interface TicketSearchData {
+  name: string;
+  age: number;
+  _from: string;
+  _to: string;
+  _ticket: number;
+  _couch: string;
+  _date: string;
 }

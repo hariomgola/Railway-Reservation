@@ -1,9 +1,3 @@
-<reservation-popup
-  [isModelOpen]="isError"
-  [textMsg]="errorMessage"
-  (modelController)="onClosingModelPopup($event)"
-></reservation-popup>
-
 <div class="component-body">
   <div class="train">
     <ng-container [ngTemplateOutlet]="title"></ng-container>
@@ -105,3 +99,10 @@
     <input class="submit" type="submit" value="Submit" (click)="onSubmit()" />
   </div>
 </ng-template>
+
+<!-- Error Popup model -->
+<reservation-popup
+  [isModelOpen]="isError"
+  [textMsg]="errorMessage"
+  (modelController)="onClosingModelPopup($event)"
+></reservation-popup>

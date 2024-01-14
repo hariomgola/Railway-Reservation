@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from '../service/reservation-service.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'reservation-search',
@@ -14,10 +15,13 @@ import { ReservationService } from '../service/reservation-service.service';
   styleUrls: ['./reservation-search.component.css'],
 })
 export class ReservationSearchComponent implements OnInit, OnDestroy {
+  availableSeat = 78;
   ticketForm!: FormGroup;
   isError = false;
   errorMessage = 'Please provide the correct input !';
   stateData = this.reservationService.getStateData();
+  todaysDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+
   constructor(
     readonly fromBuilder: FormBuilder,
     readonly router: Router,
@@ -33,7 +37,7 @@ export class ReservationSearchComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.pattern('[a-zA-Z.][a-zA-Z. ]+'),
       ]),
-      age: new FormControl(0, [
+      age: new FormControl(1, [
         Validators.required,
         Validators.pattern('[0-9-]*'),
         Validators.min(1),
@@ -47,17 +51,19 @@ export class ReservationSearchComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.pattern('[a-zA-Z.][a-zA-Z. ]+'),
       ]),
-      _ticket: new FormControl(0, [
+      _ticket: new FormControl(1, [
         Validators.required,
         Validators.pattern('[0-9-]*'),
         Validators.min(1),
         Validators.max(80),
       ]),
-      _couch: new FormControl('', [
+      _couch: new FormControl('Automatic', [
         Validators.required,
         Validators.pattern('[a-zA-Z.][a-zA-Z. ]+'),
       ]),
-      _date: new Date(),
+      _date: new FormControl(formatDate(new Date(), 'yyyy-MM-dd', 'en'), [
+        Validators.required,
+      ]),
     });
   }
   onSubmit() {
@@ -65,7 +71,9 @@ export class ReservationSearchComponent implements OnInit, OnDestroy {
       this.isError = true;
       return this.ticketForm.markAllAsTouched();
     }
-    this.router.navigate(['ticket-map'], { relativeTo: this.route });
+    this.router.navigate(['ticket-map'], {
+      queryParams: { data: JSON.stringify(this.ticketForm.value) },
+    });
   }
   onClosingModelPopup(flagValue: boolean) {
     this.isError = flagValue;

@@ -62,6 +62,10 @@
   transform: rotateY(360deg);
 }
 
+.seat:disabled + .seat-label {
+  background-color: #f9724e !important;
+}
+
 .inputConatiner {
   padding: 10px 10px;
   display: flex;

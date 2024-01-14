@@ -9,7 +9,13 @@ import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent, ApplicationRoutingModule],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, StoreModule.forRoot({}, {})],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { SeatMap } from '../models/reservation-map';
 import { ReservationService } from '../service/reservation-service.service';
+import { automaticSeatMapping } from '../logic/seat-selection.logic';
 
 @Component({
   selector: 'reservation-seat',

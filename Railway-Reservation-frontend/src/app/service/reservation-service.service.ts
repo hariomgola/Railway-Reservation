@@ -19,8 +19,8 @@ export class ReservationService {
         },
         trainMap: {
           '01': {
-            A: false,
-            B: false,
+            A: true,
+            B: true,
             C: false,
             D: false,
             E: false,

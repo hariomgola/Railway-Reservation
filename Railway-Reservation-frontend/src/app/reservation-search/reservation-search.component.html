@@ -61,6 +61,7 @@
           class="form-input"
           type="text"
           placeholder="Departure Station"
+          list="state_data"
           required
         />
       </div>
@@ -72,6 +73,7 @@
           class="form-input"
           type="text"
           placeholder="Arrival Station"
+          list="state_data"
           required
         />
       </div>
@@ -93,6 +95,18 @@
         />
       </div>
       <div class="content-div">
+        <label for="_couch" class="form-label" [innerText]="'Seat:'"></label>
+        <input
+          id="_couch"
+          formControlName="_couch"
+          class="form-input"
+          type="text"
+          placeholder="Seat Allotment type"
+          list="seal_selection"
+          required
+        />
+      </div>
+      <div class="content-div">
         <label for="_date" class="form-label" [innerText]="'Date:'"></label>
         <input
           id="_date"
@@ -100,10 +114,24 @@
           class="form-input"
           type="date"
           placeholder="Travelling Date"
-          id="date"
           required
         />
       </div>
       <input class="form-button" type="submit" value="Search Ticket" />
     </form></div
 ></ng-template>
+
+<ng-container>
+  <datalist id="state_data">
+    <ng-container *ngFor="let _state of stateData">
+      <option [value]="_state" [innerHtml]="_state"></option>
+    </ng-container>
+  </datalist>
+</ng-container>
+
+<ng-container>
+  <datalist id="seal_selection">
+    <option [value]="'Automatic'" [innerHtml]="'Automatic'"></option>
+    <option [value]="'Manual'" [innerHtml]="'Manual'"></option>
+  </datalist>
+</ng-container>

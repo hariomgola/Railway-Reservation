@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ReservationService } from '../service/reservation-service.service';
 
 @Component({
   selector: 'reservation-search',
@@ -16,10 +17,12 @@ export class ReservationSearchComponent implements OnInit, OnDestroy {
   ticketForm!: FormGroup;
   isError = false;
   errorMessage = 'Please provide the correct input !';
+  stateData = this.reservationService.getStateData();
   constructor(
     readonly fromBuilder: FormBuilder,
     readonly router: Router,
-    readonly route: ActivatedRoute
+    readonly route: ActivatedRoute,
+    readonly reservationService: ReservationService
   ) {}
   ngOnInit() {
     this.buildTicketForm();
@@ -49,6 +52,10 @@ export class ReservationSearchComponent implements OnInit, OnDestroy {
         Validators.pattern('[0-9-]*'),
         Validators.min(1),
         Validators.max(80),
+      ]),
+      _couch: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z.][a-zA-Z. ]+'),
       ]),
       _date: new Date(),
     });

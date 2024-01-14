@@ -15,23 +15,28 @@ router.get("/", (req, res) => {
   res.status(200).send({
     status: 200,
     response: {
-      "train-map": enviourmentData.routerGetTrainMap,
+      "get train tickets": enviourmentData.routerGetTrainMap,
+      "get train map seats": enviourmentData.routerGetTrainMap,
+      "get ticket details": enviourmentData.routerTrainTicket,
     },
   });
 });
 
-// router to get data for train structure
+// router to get data for train structure - get-train-vacancy
 router.get(`/${enviourmentData.routerTrainTicket}`, (req, res) => {
   logger.successRouterLogger(enviourmentData.routerTrainTicket);
   trainLogic.pushDataForCouch();
+  const _response = {
+    seat: trainLogic.seat,
+  };
   res.status(200).send({
-    seatLeft: trainLogic.seat.totalSeatVacant,
-    seatBooked: trainLogic.seat.totalSeatBooked,
-    trainMap: trainLogic.couchMap,
+    status: 200,
+    request: req.body,
+    data: _response,
   });
 });
 
-// router to get train map
+// router to get train map - get-train-map
 router.post(`/${enviourmentData.routerGetTrainMap}`, (req, res) => {
   logger.successRouterLogger(enviourmentData.routerGetTrainMap);
   trainLogic.pushDataForCouch();
@@ -46,15 +51,18 @@ router.post(`/${enviourmentData.routerGetTrainMap}`, (req, res) => {
   });
 });
 
-// router to get the ticket
+// router to get the ticket - get-train-ticket
 router.post(`/${enviourmentData.routerGetTicket}`, (req, res) => {
   logger.successRouterLogger(enviourmentData.routerGetTicket);
   const _response = {
-    pnr: "#00010001",
-    passengerName: "Hariom",
-    trainName: "Delhi Express",
-    companyName: "Inspire Travel",
-    bookingDate: "01/01/2024",
+    personalDatails: {
+      pnr: "#00010001",
+      passengerName: "Hariom",
+      trainName: "Delhi Express",
+      companyName: "Inspire Travel",
+      bookingDate: "01/01/2024",
+      seatNumber: ["02A", "02B"],
+    },
     journey_start: {
       date: "01/01/2023",
       time: "11:00 PM",

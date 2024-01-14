@@ -13,7 +13,3 @@ This project is an overview of Railway-Reservation-System using below technology
 - DataBase - [code](https://github.com/hariomgola/Railway-Reservation/tree/master/Railway-Reservation-database)
 
 ### :point_right: `I see it I love it I code it`
-
-```
-Code Protection : Active
-```

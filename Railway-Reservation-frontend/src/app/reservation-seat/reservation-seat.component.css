@@ -43,6 +43,11 @@
   flex-basis: 80px;
 }
 
+.seat-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .seat + .seat-label {
   background-color: #ccc;
   color: #fff;

@@ -87,10 +87,6 @@ export class ReservationSeatComponent implements OnInit, OnDestroy {
       A: [false],
       B: [false],
       C: [false],
-      D: [{ value: '', disabled: true }],
-      E: [{ value: '', disabled: true }],
-      F: [{ value: '', disabled: true }],
-      G: [{ value: '', disabled: true }],
     });
   }
   disablefilledValue() {
